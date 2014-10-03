@@ -8,7 +8,7 @@
  **/
 class AlphaNumeric implements \Augusthur\Validation\Rule {
 
-    protected $mesage = '%s debe estar compuesto únicamente de letras o números.';
+    protected $message = '%s debe estar compuesto únicamente de letras o números.';
 
 	/**
 	 * Validate this Rule
@@ -32,7 +32,7 @@ class AlphaNumeric implements \Augusthur\Validation\Rule {
 	 * @return string Error message
 	 **/
 	public function get_error_message($field, $value, $validator) {
-        return sprintf($mensaje, $validator->get_label($field));
+        return sprintf($message, $validator->get_label($field));
 	}
 
 }

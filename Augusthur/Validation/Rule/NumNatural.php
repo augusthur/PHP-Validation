@@ -8,7 +8,7 @@
  **/
 class NumNatural implements \Augusthur\Validation\Rule {
 
-    protected $mesage = '%s debe ser un número mayor o igual a cero.';
+    protected $message = '%s debe ser un número mayor o igual a cero.';
 
 	/**
 	 * Validate this Rule
@@ -32,7 +32,7 @@ class NumNatural implements \Augusthur\Validation\Rule {
 	 * @return string Error message
 	 **/
 	public function get_error_message($field, $value, $validator) {
-		return sprintf($mensaje, $validator->get_label($field));
+		return sprintf($message, $validator->get_label($field));
 	}
 
 }

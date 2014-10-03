@@ -1,7 +1,5 @@
 <?php namespace Augusthur\Validation\Rule;
 
-
-
 /**
  * Input must be a minimum of length
  *
@@ -10,12 +8,8 @@
  **/
 class MinLength implements \Augusthur\Validation\Rule {
 
-
-	/**
-	 * @var int Min length
-	 **/
 	protected $length = 0;
-
+    protected $mesage = '%s no debe tener menos de %d caracteres de longitud.';
 
 	/**
 	 * Constructor
@@ -25,9 +19,7 @@ class MinLength implements \Augusthur\Validation\Rule {
 	 **/
 	public function __construct($length) {
 		$this->length = (int) $length;
-	} // end func: __construct
-
-
+	}
 
 	/**
 	 * Validate this Rule
@@ -39,9 +31,7 @@ class MinLength implements \Augusthur\Validation\Rule {
 	 **/
 	public function validate($field, $value, $validator) {
 		return strlen($value) >= $this->length;
-	} // end func: validate
-
-
+	}
 
 	/**
 	 * Return error message for this Rule
@@ -52,33 +42,7 @@ class MinLength implements \Augusthur\Validation\Rule {
 	 * @return string Error message
 	 **/
 	public function get_error_message($field, $value, $validator) {
-		return $validator->get_label($field) . " must be at least {$this->length} characters in length";
-	} // end func: get_error_message
+		return sprintf($message, $validator->get_label($field));
+	}
 
-
-
-	/**
-	 * jQuery Validation rule name
-	 *
-	 * @return string Rule name
-	 **/
-	public function jquery__get_rule_name() {
-		return 'minlength';
-	} // end func: jquery__get_rule_name
-
-
-
-	/**
-	 * jQuery Validation rule definition
-	 *
-	 * @return array Rule
-	 **/
-	public function jquery__get_rule_definition() {
-		return array(
-			'minlength' => $this->length,
-		);
-	} // end func: jquery__get_rule_definition
-
-
-
-} // end class: MinLength
+}

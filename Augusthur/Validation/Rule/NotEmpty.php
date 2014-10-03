@@ -1,7 +1,5 @@
 <?php namespace Augusthur\Validation\Rule;
 
-
-
 /**
  * Input value cannot be empty
  *
@@ -10,6 +8,7 @@
  **/
 class NotEmpty implements \Augusthur\Validation\Rule {
 
+    protected $message = '%s no puede dejarse vacío.';
 
 	/**
 	 * Validate this Rule
@@ -21,9 +20,7 @@ class NotEmpty implements \Augusthur\Validation\Rule {
 	 **/
 	public function validate($field, $value, $validator) {
 		return !empty($value);
-	} // end func: validate
-
-
+	}
 
 	/**
 	 * Return error message for this Rule
@@ -34,31 +31,7 @@ class NotEmpty implements \Augusthur\Validation\Rule {
 	 * @return string Error message
 	 **/
 	public function get_error_message($field, $value, $validator) {
-		return $validator->get_label($field) . ' must not be empty';
-	} // end func: get_error_message
+		return sprintf($message, $value);
+	}
 
-
-
-	/**
-	 * jQuery Validation rule name
-	 *
-	 * @return string Rule name
-	 **/
-	public function jquery__get_rule_name() {
-		return 'required';
-	} // end func: jquery__get_rule_name
-
-
-
-	/**
-	 * jQuery Validation rule definition
-	 *
-	 * @return array Rule
-	 **/
-	public function jquery__get_rule_definition() {
-		return 'required';
-	} // end func: jquery__get_rule_definition
-
-
-
-} // end class: NotEmpty
+}

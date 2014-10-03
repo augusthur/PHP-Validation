@@ -15,7 +15,7 @@ use Augusthur\Validation\Rule;
 
 $input = array(
 	'name'      => 'Lukeloco ',
-	'email'     => ' lala@hotmail.com ',
+	'email'     => ' lala @hotmail.com ',
 	'password'  => 'password123',
 	'password2' => 'password123',
 );
@@ -47,4 +47,4 @@ if($validator->is_valid($input)) {
 }
 
 var_dump($validator->quick_is_valid($input));
-
+echo $input['email'];

@@ -8,12 +8,8 @@
  **/
 class MaxLength implements \Augusthur\Validation\Rule {
 
-
-	/**
-	 * @var int Max length
-	 **/
 	protected $length = 0;
-
+    protected $mesage = '%s no debe tener más de %d caracteres de longitud.';
 
 	/**
 	 * Constructor
@@ -23,9 +19,7 @@ class MaxLength implements \Augusthur\Validation\Rule {
 	 **/
 	public function __construct($length) {
 		$this->length = (int) $length;
-	} // end func: __construct
-
-
+	}
 
 	/**
 	 * Validate this Rule
@@ -37,9 +31,7 @@ class MaxLength implements \Augusthur\Validation\Rule {
 	 **/
 	public function validate($field, $value, $validator) {
 		return strlen($value) <= $this->length;
-	} // end func: validate
-
-
+	}
 
 	/**
 	 * Return error message for this Rule
@@ -50,33 +42,7 @@ class MaxLength implements \Augusthur\Validation\Rule {
 	 * @return string Error message
 	 **/
 	public function get_error_message($field, $value, $validator) {
-		return $validator->get_label($field) . " cannot be longer than {$this->length} characters in length";
-	} // end func: get_error_message
+		return sprintf($message, $validator->get_label($field));
+	}
 
-
-
-	/**
-	 * jQuery Validation rule name
-	 *
-	 * @return string Rule name
-	 **/
-	public function jquery__get_rule_name() {
-		return 'maxlength';
-	} // end func: jquery__get_rule_name
-
-
-
-	/**
-	 * jQuery Validation rule definition
-	 *
-	 * @return array Rule
-	 **/
-	public function jquery__get_rule_definition() {
-		return array(
-			'maxlength' => $this->length,
-		);
-	} // end func: jquery__get_rule_definition
-
-
-
-} // end class: MinLength
+}

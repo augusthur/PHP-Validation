@@ -1,7 +1,5 @@
 <?php namespace Augusthur\Validation\Rule;
 
-
-
 /**
  * Ensure all characters are in a-z
  *
@@ -9,6 +7,8 @@
  * @author Luke Lanchester <luke@lukelanchester.com>
  **/
 class Alpha implements \Augusthur\Validation\Rule {
+
+    protected $message = '%s debe estar compuesto únicamente de letras.';
 
 	/**
 	 * Validate this Rule
@@ -20,7 +20,7 @@ class Alpha implements \Augusthur\Validation\Rule {
 	 **/
 	public function validate($field, $value, $validator) {
 		if(empty($value)) return true;
-		return ctype_alpha($value);
+        return ctype_alpha(str_replace($validator->get_extrachars(), '', $value));
 	}
 
 	/**
@@ -32,7 +32,7 @@ class Alpha implements \Augusthur\Validation\Rule {
 	 * @return string Error message
 	 **/
 	public function get_error_message($field, $value, $validator) {
-		return $validator->get_label($field) . ' must use just the letters A to Z';
+		return sprintf($message, $validator->get_label($field));
 	}
 
 }

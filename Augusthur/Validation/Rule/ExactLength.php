@@ -9,7 +9,7 @@
 class ExactLength implements \Augusthur\Validation\Rule {
 
 	protected $length = 0;
-    protected $mesage = '%s debe tener exactamente %d caracteres de longitud.';
+    protected $message = '%s debe tener exactamente %d caracteres de longitud.';
 
 	/**
 	 * Constructor
@@ -42,7 +42,7 @@ class ExactLength implements \Augusthur\Validation\Rule {
 	 * @return string Error message
 	 **/
 	public function get_error_message($field, $value, $validator) {
-		return sprintf($mensaje, $validator->get_label($field), $this->length);
+		return sprintf($message, $validator->get_label($field), $this->length);
 	}
 
 }
