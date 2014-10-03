@@ -44,7 +44,7 @@ class Matches implements \Augusthur\Validation\Rule {
 	 * @return string Error message
 	 **/
 	public function get_error_message($field, $value, $validator) {
-		return sprintf($message, $value);
+		return sprintf($this->message, $value);
 	}
 
 }

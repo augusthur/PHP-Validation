@@ -6,20 +6,12 @@ use Augusthur\Validation\Validator;
 use Augusthur\Validation\Rule;
 
 
-/*$input = array(
+$input = array(
 	'name'      => 'Luke ',
 	'email'     => ' L@l ',
 	'password'  => 'password123',
 	'password2' => 'password456',
-);*/
-
-$input = array(
-	'name'      => 'Lukeloco ',
-	'email'     => ' lala @hotmail.com ',
-	'password'  => 'password123',
-	'password2' => 'password123',
 );
-
 
 $validator = new Validator();
 

@@ -9,7 +9,7 @@
 class MinLength implements \Augusthur\Validation\Rule {
 
 	protected $length = 0;
-    protected $mesage = '%s no debe tener menos de %d caracteres de longitud.';
+    protected $message = '%s no debe tener menos de %d caracteres de longitud.';
 
 	/**
 	 * Constructor
@@ -42,7 +42,7 @@ class MinLength implements \Augusthur\Validation\Rule {
 	 * @return string Error message
 	 **/
 	public function get_error_message($field, $value, $validator) {
-		return sprintf($message, $validator->get_label($field));
+		return sprintf($this->message, $validator->get_label($field), $this->length);
 	}
 
 }

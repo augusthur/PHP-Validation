@@ -42,7 +42,7 @@ class ExactLength implements \Augusthur\Validation\Rule {
 	 * @return string Error message
 	 **/
 	public function get_error_message($field, $value, $validator) {
-		return sprintf($message, $validator->get_label($field), $this->length);
+		return sprintf($this->message, $validator->get_label($field), $this->length);
 	}
 
 }
