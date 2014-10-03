@@ -2,15 +2,22 @@
 
 include '../autoload.php';
 
-use HybridLogic\Validation\Validator;
-use HybridLogic\Validation\Rule;
+use Augusthur\Validation\Validator;
+use Augusthur\Validation\Rule;
 
 
-$input = array(
+/*$input = array(
 	'name'      => 'Luke ',
-	'email'     => ' LuKe@lUkElAnChEsTeR.CO.UK ',
+	'email'     => ' L@l ',
 	'password'  => 'password123',
 	'password2' => 'password456',
+);*/
+
+$input = array(
+	'name'      => 'Lukeloco ',
+	'email'     => ' lala@hotmail.com ',
+	'password'  => 'password123',
+	'password2' => 'password123',
 );
 
 
@@ -38,3 +45,6 @@ if($validator->is_valid($input)) {
 } else {
 	var_dump('error', $validator->get_errors(), $validator->get_data());
 }
+
+var_dump($validator->quick_is_valid($input));
+

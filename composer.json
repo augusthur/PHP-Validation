@@ -1,8 +1,8 @@
 {
-	"name": "hybridlogic/validation",
-	"description": "A simple, extensible validation library for PHP with support for filtering and validating any input array along with generating client side validation code.",
-	"keywords": ["validation", "forms", "services", "models", "rules", "jquery", "client-side"],
-	"homepage": "https://github.com/Dachande663/PHP-Validation",
+	"name": "augusthur/validation",
+	"description": "A simple, extensible validation library for PHP with support for filtering and validating any input array.",
+	"keywords": ["validation", "forms", "services", "models", "rules"],
+	"homepage": "https://github.com/augusthur/PHP-Validation",
 	"license": "MIT",
 	"authors": [{
 		"name": "Luke Lanchester",
@@ -11,7 +11,7 @@
 		"role": "Developer"
 	}],
 	"autoload": {
-		"psr-0": {"HybridLogic": "src/"}
+		"psr-0": {"Augusthur": "src/"}
 	},
 	"require": {
 		"php": ">=5.3.0"
