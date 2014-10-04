@@ -9,7 +9,7 @@
 class MinLength implements \Augusthur\Validation\Rule {
 
 	protected $length = 0;
-    protected $message = '%s no debe tener menos de %d caracteres de longitud.';
+    protected $message = '%s debe tener al menos %d caracteres de longitud.';
 
 	/**
 	 * Constructor

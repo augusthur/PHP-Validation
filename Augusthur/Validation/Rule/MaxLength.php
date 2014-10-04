@@ -9,7 +9,7 @@
 class MaxLength implements \Augusthur\Validation\Rule {
 
 	protected $length = 0;
-    protected $message = '%s no debe tener más de %d caracteres de longitud.';
+    protected $message = '%s debe tener a lo sumo %d caracteres de longitud.';
 
 	/**
 	 * Constructor

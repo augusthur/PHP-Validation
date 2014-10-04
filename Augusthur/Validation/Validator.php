@@ -28,7 +28,7 @@ class Validator {
     }
 
     public function get_extrachars() {
-        return $extra_chars;
+        return $extrachars;
     }
 
     public function add_filter($field, $filter) {
