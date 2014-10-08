@@ -2,8 +2,8 @@
 
 include '../autoload.php';
 
-use HybridLogic\Validation\Validator;
-use HybridLogic\Validation\Rule;
+use Augusthur\Validation\Validator;
+use Augusthur\Validation\Rule;
 
 
 $input = array(

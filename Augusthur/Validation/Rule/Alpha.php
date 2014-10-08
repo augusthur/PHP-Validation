@@ -9,6 +9,11 @@
 class Alpha implements \Augusthur\Validation\Rule {
 
     protected $message = '%s debe estar compuesto únicamente de letras.';
+    protected $extrachars;
+
+    public function __construct($extrachars = array()) {
+		$this->extrachars = $extrachars;
+	}
 
 	/**
 	 * Validate this Rule
@@ -20,7 +25,7 @@ class Alpha implements \Augusthur\Validation\Rule {
 	 **/
 	public function validate($field, $value, $validator) {
 		if(empty($value)) return true;
-        return ctype_alpha(str_replace($validator->get_extrachars(), '', $value));
+        return ctype_alpha(str_replace(array_merge($validator->get_extrachars(), $this->extrachars), '', $value));
 	}
 
 	/**
