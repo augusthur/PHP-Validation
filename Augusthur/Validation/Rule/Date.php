@@ -31,7 +31,7 @@ class Date implements \Augusthur\Validation\Rule {
 	 **/
     public function validate($field, $value, $validator) {
         if(empty($value)) return true;
-        $d = DateTime::createFromFormat($this->format, $value);
+        $d = \DateTime::createFromFormat($this->format, $value);
         return $d && $d->format($this->format) == $value;
     }
 
