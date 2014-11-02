@@ -1,24 +1,15 @@
 <?php namespace Augusthur\Validation\Rule;
 
 /**
- * Regex
+ * Ensure one string exactly matches another
  *
  * @package Validation
  * @author Luke Lanchester <luke@lukelanchester.com>
  **/
-class Regex implements \Augusthur\Validation\Rule {
+class Telephone implements \Augusthur\Validation\Rule {
 
-	protected $regex;
-    protected $message = '%s no es un valor válido para $s.';
-
-	/**
-	 * Constructor
-	 *
-	 * @return void
-	 **/
-	public function __construct($regex) {
-		$this->regex = $regex;
-	}
+    protected $regex = '/^[0-9 \(\)\+\-]*$/';
+    protected $message = '%s no es un número de teléfono válido.';
 
 	/**
 	 * Validate this Rule
@@ -28,10 +19,9 @@ class Regex implements \Augusthur\Validation\Rule {
 	 * @param Validator Validator object
 	 * @return bool True if rule passes
 	 **/
-	public function validate($field, $value, $validator) {
-        if(empty($value)) return true;
-		return (bool) preg_match($this->regex, $value);
-	}
+    public function validate($field, $value, $validator) {
+        return (bool) preg_match($this->regex, $value);
+    }
 
 	/**
 	 * Return error message for this Rule
@@ -42,7 +32,7 @@ class Regex implements \Augusthur\Validation\Rule {
 	 * @return string Error message
 	 **/
 	public function get_error_message($field, $value, $validator) {
-        return sprintf($this->message, $value, $validator->get_label($field));
+		return sprintf($this->message, $value);
 	}
 
 }

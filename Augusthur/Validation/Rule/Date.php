@@ -1,23 +1,24 @@
 <?php namespace Augusthur\Validation\Rule;
 
 /**
- * Regex
+ * Ensure one string exactly matches another
  *
  * @package Validation
  * @author Luke Lanchester <luke@lukelanchester.com>
  **/
-class Regex implements \Augusthur\Validation\Rule {
+class Date implements \Augusthur\Validation\Rule {
 
-	protected $regex;
-    protected $message = '%s no es un valor válido para $s.';
+    protected $format;
+    protected $message = '%s no es una fecha válida.';
 
 	/**
 	 * Constructor
 	 *
+	 * @param string Field to compare against
 	 * @return void
 	 **/
-	public function __construct($regex) {
-		$this->regex = $regex;
+	public function __construct($format = 'Y-m-d') {
+		$this->format = $format;
 	}
 
 	/**
@@ -28,10 +29,11 @@ class Regex implements \Augusthur\Validation\Rule {
 	 * @param Validator Validator object
 	 * @return bool True if rule passes
 	 **/
-	public function validate($field, $value, $validator) {
+    public function validate($field, $value, $validator) {
         if(empty($value)) return true;
-		return (bool) preg_match($this->regex, $value);
-	}
+        $d = DateTime::createFromFormat($this->format, $value);
+        return $d && $d->format($this->format) == $value;
+    }
 
 	/**
 	 * Return error message for this Rule
@@ -42,7 +44,7 @@ class Regex implements \Augusthur\Validation\Rule {
 	 * @return string Error message
 	 **/
 	public function get_error_message($field, $value, $validator) {
-        return sprintf($this->message, $value, $validator->get_label($field));
+		return sprintf($this->message, $value);
 	}
 
 }

@@ -1,7 +1,5 @@
 <?php namespace Augusthur\Validation\Rule;
 
-
-
 /**
  * Validate a URL
  *
@@ -10,18 +8,9 @@
  **/
 class URL implements \Augusthur\Validation\Rule {
 
-
-	/**
-	 * @var array Allowed protocols
-	 **/
 	protected $allowed_domains;
-
-
-	/**
-	 * @var array Allowed protocols
-	 **/
 	protected $allowed_protocols = array('http', 'https');
-
+    protected $message = 'No se cargó una dirección válida para el campo %s.';
 
 	/**
 	 * Constructor
@@ -33,9 +22,7 @@ class URL implements \Augusthur\Validation\Rule {
 	public function __construct(array $allowed_domains = null, array $allowed_protocols = null) {
 		if($allowed_domains !== null) $this->allowed_domains = $allowed_domains;
 		if($allowed_protocols !== null) $this->allowed_protocols = $allowed_protocols;
-	} // end func: __construct
-
-
+	}
 
 	/**
 	 * Validate this Rule
@@ -47,7 +34,7 @@ class URL implements \Augusthur\Validation\Rule {
 	 **/
 	public function validate($field, $value, $validator) {
 
-		if(empty($value)) return false;
+		if(empty($value)) return true;
 		if(!filter_var($value, FILTER_VALIDATE_URL)) return false;
 
 		$url = parse_url($value);
@@ -57,9 +44,7 @@ class URL implements \Augusthur\Validation\Rule {
 
 		return in_array($url['host'], $this->allowed_domains);
 
-	} // end func: validate
-
-
+	}
 
 	/**
 	 * Return error message for this Rule
@@ -70,31 +55,7 @@ class URL implements \Augusthur\Validation\Rule {
 	 * @return string Error message
 	 **/
 	public function get_error_message($field, $value, $validator) {
-		return $validator->get_label($field) . ' must be a valid website address';
-	} // end func: get_error_message
+        return sprintf($this->message, $validator->get_label($field));
+	}
 
-
-
-	/**
-	 * jQuery Validation rule name
-	 *
-	 * @return string Rule name
-	 **/
-	public function jquery__get_rule_name() {
-		return 'url';
-	} // end func: jquery__get_rule_name
-
-
-
-	/**
-	 * jQuery Validation rule definition
-	 *
-	 * @return array Rule
-	 **/
-	public function jquery__get_rule_definition() {
-		return 'url';
-	} // end func: jquery__get_rule_definition
-
-
-
-} // end class: URL
+}
