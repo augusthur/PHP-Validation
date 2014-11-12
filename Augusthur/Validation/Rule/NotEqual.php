@@ -51,9 +51,9 @@ class NotEqual implements \Augusthur\Validation\Rule {
 	 * @param Validator Validator object
 	 * @return string Error message
 	 **/
-	public function get_error_message($field, $value, $validator) {
-		return $validator->get_label($field) . ' can not be the provided value';
-	} // end func: get_error_message
+	public function getError($field, $value, $validator) {
+		return $validator->getLabel($field) . ' can not be the provided value';
+	} // end func: getError
 
 
 

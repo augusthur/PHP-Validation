@@ -31,7 +31,7 @@ class Matches implements \Augusthur\Validation\Rule {
 	 * @return bool True if rule passes
 	 **/
 	public function validate($field, $value, $validator) {
-		$value2 = $validator->get_data($this->compare_against);
+		$value2 = $validator->getData($this->compare_against);
 		return $value === $value2;
 	}
 
@@ -43,7 +43,7 @@ class Matches implements \Augusthur\Validation\Rule {
 	 * @param Validator Validator object
 	 * @return string Error message
 	 **/
-	public function get_error_message($field, $value, $validator) {
+	public function getError($field, $value, $validator) {
 		return sprintf($this->message, $value);
 	}
 

@@ -25,7 +25,7 @@ class Alpha implements \Augusthur\Validation\Rule {
 	 **/
 	public function validate($field, $value, $validator) {
 		if(empty($value)) return true;
-        return ctype_alpha(str_replace(array_merge($validator->get_extrachars(), $this->extrachars), '', $value));
+        return ctype_alpha(str_replace(array_merge($validator->getExtrachars(), $this->extrachars), '', $value));
 	}
 
 	/**
@@ -36,8 +36,8 @@ class Alpha implements \Augusthur\Validation\Rule {
 	 * @param Validator Validator object
 	 * @return string Error message
 	 **/
-	public function get_error_message($field, $value, $validator) {
-		return sprintf($this->message, $validator->get_label($field));
+	public function getError($field, $value, $validator) {
+		return sprintf($this->message, $validator->getLabel($field));
 	}
 
 }

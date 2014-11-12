@@ -32,7 +32,7 @@ interface Rule {
 	 * @param Validator Validator object
 	 * @return string Error message
 	 **/
-	public function get_error_message($field, $value, $validator);
+	public function getError($field, $value, $validator);
 
 
 

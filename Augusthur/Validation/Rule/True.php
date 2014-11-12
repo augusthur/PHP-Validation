@@ -33,9 +33,9 @@ class True implements \Augusthur\Validation\Rule {
 	 * @param Validator Validator object
 	 * @return string Error message
 	 **/
-	public function get_error_message($field, $value, $validator) {
-		return $validator->get_label($field) . ' must be checked';
-	} // end func: get_error_message
+	public function getError($field, $value, $validator) {
+		return $validator->getLabel($field) . ' must be checked';
+	} // end func: getError
 
 
 

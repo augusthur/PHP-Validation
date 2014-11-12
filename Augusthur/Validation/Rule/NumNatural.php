@@ -31,8 +31,8 @@ class NumNatural implements \Augusthur\Validation\Rule {
 	 * @param Validator Validator object
 	 * @return string Error message
 	 **/
-	public function get_error_message($field, $value, $validator) {
-		return sprintf($this->message, $validator->get_label($field));
+	public function getError($field, $value, $validator) {
+		return sprintf($this->message, $validator->getLabel($field));
 	}
 
 }

@@ -17,26 +17,26 @@ $validator = new Validator();
 
 
 $validator
-	->set_label('name', 'your name')
-	->set_label('password2', 'password confirmation')
+	->setLabel('name', 'your name')
+	->setLabel('password2', 'password confirmation')
 
-	//->add_filter('name', 'trim')
-	->add_filter('email', 'trim')
-	->add_filter('email', 'strtolower')
-    ->add_rule('name', new Rule\Alpha())
-	->add_rule('name', new Rule\MinLength(5))
-	->add_rule('name', new Rule\MaxLength(10))
-	->add_rule('email', new Rule\MinLength(5))
-	->add_rule('email', new Rule\Email())
-	->add_rule('password', new Rule\Matches('password2'))
+	//->addFilter('name', 'trim')
+	->addFilter('email', 'trim')
+	->addFilter('email', 'strtolower')
+    ->addRule('name', new Rule\Alpha())
+	->addRule('name', new Rule\MinLength(5))
+	->addRule('name', new Rule\MaxLength(10))
+	->addRule('email', new Rule\MinLength(5))
+	->addRule('email', new Rule\Email())
+	->addRule('password', new Rule\Matches('password2'))
 ;
 
 
-if($validator->is_valid($input)) {
-	var_dump('success', $validator->get_data());
+if($validator->validate($input)) {
+	var_dump('success', $validator->getData());
 } else {
-	var_dump('error', $validator->get_errors(), $validator->get_data());
+	var_dump('error', $validator->getErrors(), $validator->getData());
 }
 
-var_dump($validator->quick_is_valid($input));
+var_dump($validator->quickValidate($input));
 echo $input['email'];
