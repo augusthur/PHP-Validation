@@ -34,7 +34,7 @@ class URL implements \Augusthur\Validation\Rule {
 	 **/
 	public function validate($field, $value, $validator) {
 
-		if(empty($value)) return true;
+		if(!isset($value)) return true;
 		if(!filter_var($value, FILTER_VALIDATE_URL)) return false;
 
 		$url = parse_url($value);

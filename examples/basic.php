@@ -3,6 +3,7 @@
 include '../autoload.php';
 
 use Augusthur\Validation\Validator;
+use Augusthur\Validation\QuickValidator;
 use Augusthur\Validation\Rule;
 
 
@@ -38,5 +39,8 @@ if($validator->validate($input)) {
 	var_dump('error', $validator->getErrors(), $validator->getData());
 }
 
-var_dump($validator->quickValidate($input));
-echo $input['email'];
+$holis = null;
+$vdt = new QuickValidator(function() {echo 'holis!!';});
+$vdt->test('holis@gmail.com', new Rule\Email());
+//$vdt->test('loca', new Rule\NumNatural());
+$vdt->test($holis, new Rule\Alpha());

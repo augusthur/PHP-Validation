@@ -58,18 +58,6 @@ class Validator {
         return empty($this->errors);
     }
 
-    public function quickValidate() {
-        if(empty($this->rules)) return true;
-        $errors = true;
-        foreach($this->rules as $field => $rules) {
-            $value = isset($this->data[$field]) ? $this->data[$field] : null;
-            foreach($rules as $rule) {
-                $errors = $errors && $rule->validate($field, $value, $this);
-            }
-        }
-        return $errors;
-    }
-
     public function getData($field = null, $default = null) {
         if($field === null) return $this->data;
         return array_key_exists($field, $this->data) ? $this->data[$field] : $default;

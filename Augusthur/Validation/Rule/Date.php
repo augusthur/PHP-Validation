@@ -30,7 +30,7 @@ class Date implements \Augusthur\Validation\Rule {
 	 * @return bool True if rule passes
 	 **/
     public function validate($field, $value, $validator) {
-        if(empty($value)) return true;
+        if(!isset($value)) return true;
         $d = \DateTime::createFromFormat($this->format, $value);
         return $d && $d->format($this->format) == $value;
     }

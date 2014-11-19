@@ -19,7 +19,7 @@ class Email implements \Augusthur\Validation\Rule {
 	 * @return bool True if rule passes
 	 **/
 	public function validate($field, $value, $validator) {
-        if(empty($value)) return true;
+        if(!isset($value)) return true;
 		return (bool) filter_var($value, FILTER_VALIDATE_EMAIL);
 	}
 
