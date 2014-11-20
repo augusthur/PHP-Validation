@@ -31,7 +31,7 @@ class MatchesPassword implements \Augusthur\Validation\Rule {
 	 * @return bool True if rule passes
 	 **/
 	public function validate($field, $value, $validator) {
-		return password_verify($value, $this->hash);
+		return !isset($value) || password_verify($value, $this->hash);
 	}
 
 	/**

@@ -1,7 +1,5 @@
 <?php namespace Augusthur\Validation\Rule;
 
-
-
 /**
  * Ensure input value is in supplied array
  *
@@ -10,18 +8,8 @@
  **/
 class InArray implements \Augusthur\Validation\Rule {
 
-
-	/**
-	 * @var array Array to match against
-	 **/
 	protected $array;
-
-
-	/**
-	 * @var bool If true, match against keys not values
-	 **/
 	protected $match_keys;
-
 
 	/**
 	 * Constructor
@@ -31,9 +19,7 @@ class InArray implements \Augusthur\Validation\Rule {
 	public function __construct(array $array, $match_keys = false) {
 		$this->array = $array;
 		$this->match_keys = (bool) $match_keys;
-	} // end func: __construct
-
-
+	}
 
 	/**
 	 * Validate this Rule
@@ -49,9 +35,7 @@ class InArray implements \Augusthur\Validation\Rule {
 		} else {
 			return in_array($value, $this->array);
 		}
-	} // end func: validate
-
-
+	}
 
 	/**
 	 * Return error message for this Rule
@@ -63,49 +47,6 @@ class InArray implements \Augusthur\Validation\Rule {
 	 **/
 	public function getError($field, $value, $validator) {
 		return $validator->getLabel($field) . ' must be in the available list of options';
-	} // end func: getError
+	}
 
-
-
-	/**
-	 * jQuery Validation rule name
-	 *
-	 * @return string Rule name
-	 **/
-	public function jquery__get_rule_name() {
-		return 'php_inarray';
-	} // end func: jquery__get_rule_name
-
-
-
-	/**
-	 * jQuery Validation rule definition
-	 *
-	 * @return array Rule
-	 **/
-	public function jquery__get_rule_definition() {
-
-		$keys = $this->match_keys ? array_keys($this->array) : array_values($this->array);
-		$array = array_fill_keys($keys, 1);
-
-		return array(
-			'php_inarray' => $array,
-		);
-	} // end func: jquery__get_rule_definition
-
-
-
-	/**
-	 * jQuery Validation method
-	 *
-	 * @return string JavaScript function
-	 **/
-	public function jquery__get_method_definition() {
-		return 'function(value, element, keys){
-			return this.optional(element) || (value in keys);
-		}';
-	} // end func: jquery__get_method_definition
-
-
-
-} // end class: InArray
+}

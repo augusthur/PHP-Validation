@@ -26,7 +26,7 @@ class AlphaSlug implements \Augusthur\Validation\Rule {
 	public function validate($field, $value, $validator) {
 		if(!isset($value)) return true;
 		return (bool) preg_match($this->regex, $value);
-	} // end func: validate
+	}
 
 
 
@@ -40,43 +40,6 @@ class AlphaSlug implements \Augusthur\Validation\Rule {
 	 **/
 	public function getError($field, $value, $validator) {
 		return $validator->getLabel($field) . ' can contain all letters, numbers, hyphens and underscores';
-	} // end func: getError
+	}
 
-
-
-	/**
-	 * jQuery Validation rule name
-	 *
-	 * @return string Rule name
-	 **/
-	public function jquery__get_rule_name() {
-		return 'php_alphaslug';
-	} // end func: jquery__get_rule_name
-
-
-
-	/**
-	 * jQuery Validation rule definition
-	 *
-	 * @return array Rule
-	 **/
-	public function jquery__get_rule_definition() {
-		return 'php_alphaslug';
-	} // end func: jquery__get_rule_definition
-
-
-
-	/**
-	 * jQuery Validation method
-	 *
-	 * @return string JavaScript function
-	 **/
-	public function jquery__get_method_definition() {
-		return 'function(value, element){
-			return this.optional(element) || ' . $this->regex . '.test(value);
-		}';
-	} // end func: jquery__get_method_definition
-
-
-
-} // end class: AlphaSlug
+}
