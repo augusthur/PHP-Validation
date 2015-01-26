@@ -8,7 +8,7 @@ use Augusthur\Validation\Rule;
 
 
 $input = array(
-	'name'      => 'Luké Ker',
+	//'name'      => 'Luké Ker',
 	'email'     => ' L@l ',
 	'password'  => 'password123',
 	'password2' => 'password456',
@@ -30,6 +30,7 @@ $validator
 	->addRule('email', new Rule\MinLength(5))
 	->addRule('email', new Rule\Email())
 	->addRule('password', new Rule\Matches('password2'))
+    ->addOptional('name')
 ;
 
 

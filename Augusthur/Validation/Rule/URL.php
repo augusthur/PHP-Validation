@@ -33,17 +33,11 @@ class URL implements \Augusthur\Validation\Rule {
 	 * @return bool True if rule passes
 	 **/
 	public function validate($field, $value, $validator) {
-
-		if(!isset($value)) return true;
 		if(!filter_var($value, FILTER_VALIDATE_URL)) return false;
-
 		$url = parse_url($value);
 		if(!in_array($url['scheme'], $this->allowed_protocols)) return false;
-
 		if($this->allowed_domains === null) return true;
-
 		return in_array($url['host'], $this->allowed_domains);
-
 	}
 
 	/**

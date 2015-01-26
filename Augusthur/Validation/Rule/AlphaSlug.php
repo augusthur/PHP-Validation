@@ -24,7 +24,6 @@ class AlphaSlug implements \Augusthur\Validation\Rule {
 	 * @return bool True if rule passes
 	 **/
 	public function validate($field, $value, $validator) {
-		if(!isset($value)) return true;
 		return (bool) preg_match($this->regex, $value);
 	}
 

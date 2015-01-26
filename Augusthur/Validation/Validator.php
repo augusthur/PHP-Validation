@@ -16,6 +16,7 @@ class Validator {
     protected $labels = array();
     protected $filters = array();
     protected $rules = array();
+    protected $optionals = array();
     protected $extrachars = array('á', 'é', 'í', 'ó', 'ú', 'ü', 'ñ', 'Á', 'É', 'Í', 'Ó', 'Ú', 'Ü', 'Ñ');
 
     public function setLabel($field, $label) {
@@ -35,6 +36,11 @@ class Validator {
         if(!is_callable($filter)) return $this;
         if(!isset($this->filters[$field])) $this->filters[$field] = array();
         $this->filters[$field][] = $filter;
+        return $this;
+    }
+
+    public function addOptional($field) {
+        $this->optionals[] = $field;
         return $this;
     }
 
@@ -72,9 +78,11 @@ class Validator {
         $errors = array();
         foreach($this->rules as $field => $rules) {
             $value = isset($this->data[$field]) ? $this->data[$field] : null;
-            foreach($rules as $rule) {
-                list($result, $error) = $this->testRule($field, $value, $rule);
-                if($result === false) $errors[] = $error;
+            if (isset($value) || !in_array($field, $this->optionals)) {
+                foreach($rules as $rule) {
+                    list($result, $error) = $this->testRule($field, $value, $rule);
+                    if($result === false) $errors[] = $error;
+                }
             }
         }
         return $errors;

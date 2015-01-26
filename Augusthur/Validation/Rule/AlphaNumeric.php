@@ -19,7 +19,6 @@ class AlphaNumeric implements \Augusthur\Validation\Rule {
 	 * @return bool True if rule passes
 	 **/
 	public function validate($field, $value, $validator) {
-		if(!isset($value)) return true;
 		return ctype_alnum($value);
 	}
 
