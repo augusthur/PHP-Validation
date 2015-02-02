@@ -9,9 +9,9 @@ use Augusthur\Validation\Rule;
 
 $input = array(
 	//'name'      => 'Luké Ker',
-	'email'     => ' L@l ',
+	'email'     => array(),
 	'password'  => 'password123',
-	'password2' => 'password456',
+	'password2' => 'password123',
 );
 
 $validator = new Validator();
@@ -22,8 +22,8 @@ $validator
 	->setLabel('password2', 'password confirmation')
 
 	//->addFilter('name', 'trim')
-	->addFilter('email', 'trim')
-	->addFilter('email', 'strtolower')
+	//->addFilter('email', 'trim')
+	//->addFilter('email', 'strtolower')
     ->addRule('name', new Rule\Alpha())
 	->addRule('name', new Rule\MinLength(5))
 	->addRule('name', new Rule\MaxLength(10))

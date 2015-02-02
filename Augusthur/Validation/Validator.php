@@ -40,7 +40,11 @@ class Validator {
     }
 
     public function addOptional($field) {
-        $this->optionals[] = $field;
+        if (is_array($field)) {
+            $this->optionals = array_merge($this->optionals, $field);
+        } else {
+            $this->optionals[] = $field;
+        }
         return $this;
     }
 
@@ -89,13 +93,20 @@ class Validator {
     }
 
     protected function testRule($field, $value, $rule) {
-        $result = $rule->validate($field, $value, $this);
+        if (is_array($value)) {
+            $result = true;
+            foreach ($value as $element) {
+                $result &= $rule->validate($field, $element, $this);
+                $value = $element;
+            }
+        } else {
+            $result = $rule->validate($field, $value, $this);
+        }
         if($result) {
             return array(true, null);
         } else {
             return array(false, $rule->getError($field, $value, $this));
         }
-
     }
 
     protected function applyFilters(array $data) {
