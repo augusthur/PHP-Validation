@@ -112,8 +112,13 @@ class Validator {
     protected function applyFilters(array $data) {
         if(empty($this->filters)) return $data;
         foreach($this->filters as $field => $filters) {
-            if(!isset($data[$field])) continue;
-            $value = $data[$field];
+            if(isset($data[$field])) {
+                $value = $data[$field];
+            } else if (in_array($field, $this->optionals)) {
+                continue;
+            } else {
+                $value = null;
+            }
             foreach($filters as $filter) {
                 $value = call_user_func($filter, $value);
             }
