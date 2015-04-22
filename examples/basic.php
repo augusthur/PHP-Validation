@@ -12,6 +12,7 @@ $input = array(
 	'email'     => array(),
 	'password'  => 'password123',
 	'password2' => 'password123',
+    'array'     => json_decode('[{"usr":"2","pat":"1"},{"usr":"4","pat":"6"}]', true)
 );
 
 $validator = new Validator();
@@ -29,6 +30,7 @@ $validator
 	->addRule('name', new Rule\MaxLength(10))
 	->addRule('email', new Rule\MinLength(5))
 	->addRule('email', new Rule\Email())
+    ->addRule('array', new Rule\Attributes(['usr' => 'ctype_digit', 'pat' => 'ctype_digit']))
 	->addRule('password', new Rule\Matches('password2'))
     ->addOptional('name')
 ;
