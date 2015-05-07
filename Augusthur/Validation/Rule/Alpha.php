@@ -24,7 +24,7 @@ class Alpha implements \Augusthur\Validation\Rule {
 	 * @return bool True if rule passes
 	 **/
 	public function validate($field, $value, $validator) {
-        return ctype_alpha(str_replace(array_merge($validator->getExtrachars(), $this->extrachars), '', $value));
+        return preg_match("/[^[:alpha:]]/ui", str_replace($this->extrachars, '', $value)) == 0;
 	}
 
 	/**

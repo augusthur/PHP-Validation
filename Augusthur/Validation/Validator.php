@@ -17,7 +17,6 @@ class Validator {
     protected $filters = array();
     protected $rules = array();
     protected $optionals = array();
-    protected $extrachars = array('á', 'é', 'í', 'ó', 'ú', 'ü', 'ñ', 'Á', 'É', 'Í', 'Ó', 'Ú', 'Ü', 'Ñ');
 
     public function setLabel($field, $label) {
         $this->labels[$field] = $label;
@@ -26,10 +25,6 @@ class Validator {
 
     public function getLabel($field) {
         return isset($this->labels[$field]) ? $this->labels[$field] : $this->humanizeFieldName($field);
-    }
-
-    public function getExtrachars() {
-        return $this->extrachars;
     }
 
     public function addFilter($field, $filter) {

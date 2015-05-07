@@ -9,6 +9,11 @@
 class AlphaNumeric implements \Augusthur\Validation\Rule {
 
     protected $message = '%s debe estar compuesto únicamente de letras o números.';
+    protected $extrachars;
+
+    public function __construct($extrachars = array()) {
+		$this->extrachars = $extrachars;
+	}
 
 	/**
 	 * Validate this Rule
@@ -19,7 +24,7 @@ class AlphaNumeric implements \Augusthur\Validation\Rule {
 	 * @return bool True if rule passes
 	 **/
 	public function validate($field, $value, $validator) {
-		return ctype_alnum($value);
+        return preg_match("/[^[:alnum:]]/ui", str_replace($this->extrachars, '', $value)) == 0;
 	}
 
 	/**

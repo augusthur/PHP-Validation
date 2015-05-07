@@ -6,7 +6,7 @@
  * @package Validation
  * @author Augusto Mathurin
  **/
-class IsSet implements \Augusthur\Validation\Rule {
+class Required implements \Augusthur\Validation\Rule {
 
     protected $message = '%s debe completarse.';
 
